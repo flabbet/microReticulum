@@ -135,7 +135,7 @@ Reticulum::Reticulum() : _object(new Object()) {
 	//_storagepath = ".";
 	strncpy(_storagepath, ".", FILEPATH_MAXSIZE);
 	//_cachepath = "./cache";
-	strncpy(_cachepath, "./cache", FILEPATH_MAXSIZE);
+	strncpy(_cachepath, "/cache", FILEPATH_MAXSIZE);
 
 /*p TODO
 	if not os.path.isdir(Reticulum.storagepath):

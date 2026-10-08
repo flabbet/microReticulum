@@ -73,7 +73,7 @@ namespace ArduinoJson {
 }
 
 
-const char test_file_path[] = "./test_file";
+const char test_file_path[] = "/test_file";
 const char test_file_data[] = "test data";
 
 void testWrite() {
@@ -104,9 +104,9 @@ void testRead() {
 }
 
 
-const char test_object_path[] = "./test_object";
-const char test_array_path[] = "./test_array";
-const char test_series_path[] = "./test_series";
+const char test_object_path[] = "/test_object";
+const char test_array_path[] = "/test_array";
+const char test_series_path[] = "/test_series";
 
 /*
 void testSerializeObject() {
@@ -235,7 +235,7 @@ void testDeserializeObject() {
 
 }
 
-const char test_vector_path[] = "./test_vector";
+const char test_vector_path[] = "/test_vector";
 
 void testSerializeVector() {
 
@@ -332,7 +332,7 @@ void testDeserializeVector() {
 
 }
 
-const char test_set_path[] = "./test_set";
+const char test_set_path[] = "/test_set";
 
 void testSerializeSet() {
 
@@ -418,7 +418,7 @@ void testDeserializeSet() {
 }
 
 
-const char test_map_path[] = "./test_map";
+const char test_map_path[] = "/test_map";
 
 void testSerializeMap() {
 
@@ -495,8 +495,8 @@ void testDeserializeMap() {
 
 }
 
-const char test_path_table_path[] = "./test_path_table";
-const char test_empty_path_table_path[] = "./test_empty_path_table";
+const char test_path_table_path[] = "/test_path_table";
+const char test_empty_path_table_path[] = "/test_empty_path_table";
 
 void testSerializeDestinationTable() {
 
@@ -665,7 +665,7 @@ void testSerializeTimeOffset() {
 	uint64_t offset = RNS::Utilities::OS::ltime();
 	TRACEF("Writing time offset of %llu to file /time_offset", offset);
 	RNS::Bytes buf((uint8_t*)&offset, sizeof(offset));
-	RNS::Utilities::OS::write_file("./time_offset", buf);
+	RNS::Utilities::OS::write_file("/time_offset", buf);
 }
 
 

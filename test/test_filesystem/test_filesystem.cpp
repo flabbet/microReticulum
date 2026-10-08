@@ -10,8 +10,8 @@
 #include <ostream>
 #include <iostream>
 
-const char test_file_path[] = "./test_file";
-const char test_stream_path[] = "./test_stream";
+const char test_file_path[] = "/test_file";
+const char test_stream_path[] = "/test_stream";
 
 
 void writeFile(const char* file_path) {
@@ -164,7 +164,7 @@ void testListDirectory() {
 	INFOF("testListDirectory: pre-mem: %lu", pre_memory);
 
 	{
-		RNS::Utilities::OS::list_directory("./", [](const char* file_path) {
+		RNS::Utilities::OS::list_directory("/", [](const char* file_path) {
 			INFOF("FILE: %s", file_path);
 		});
 	}
@@ -199,7 +199,7 @@ void testReadNonexistantFile() {
 
 	{
 		RNS::Bytes data;
-		size_t read = RNS::Utilities::OS::read_file("./foo", data);
+		size_t read = RNS::Utilities::OS::read_file("/foo", data);
 		TEST_ASSERT_EQUAL_size_t(0, read);
 	}
 
@@ -239,27 +239,27 @@ void testReadFileStream() {
 }
 
 void testStdStream() {
-	std::ofstream file("./stream");
+	std::ofstream file("/stream");
  	if(file.is_open()) {
 		file << "Hello world!" << std::endl;
 		file.flush();
 		file.close();
 	}
-	TEST_ASSERT_TRUE(RNS::Utilities::OS::file_exists("./stream"));
-	RNS::Utilities::OS::remove_file("./stream");
+	TEST_ASSERT_TRUE(RNS::Utilities::OS::file_exists("/stream"));
+	RNS::Utilities::OS::remove_file("/stream");
 }
 
 void testCacheWrite() {
 
 	// CBA Attempt to reproduce failure to open file for write that is leaking mmeory
-	if (!RNS::Utilities::OS::directory_exists("./cache")) {
-		RNS::Utilities::OS::create_directory("./cache");
+	if (!RNS::Utilities::OS::directory_exists("/cache")) {
+		RNS::Utilities::OS::create_directory("/cache");
 	}
-	writeFile("./cache/test");
-	writeFile("./cache/45c50662af11f1b26889efaab547942b45c50662af11f1b26889efaab547942b");
-	writeFile("./cache/40fe4ab8105b591cca1ef159d476a7b440fe4ab8105b591cca1ef159d476a7b4");
-	writeFile("./cache/c755609f4d0ab75b5119905a032eeb33c755609f4d0ab75b5119905a032eeb33");
-	writeFile("./cache/426f66f9aadf866933358b71295f59d0426f66f9aadf866933358b71295f59d0");
+	writeFile("/cache/test");
+	writeFile("/cache/45c50662af11f1b26889efaab547942b45c50662af11f1b26889efaab547942b");
+	writeFile("/cache/40fe4ab8105b591cca1ef159d476a7b440fe4ab8105b591cca1ef159d476a7b4");
+	writeFile("/cache/c755609f4d0ab75b5119905a032eeb33c755609f4d0ab75b5119905a032eeb33");
+	writeFile("/cache/426f66f9aadf866933358b71295f59d0426f66f9aadf866933358b71295f59d0");
 
 }
 
@@ -288,8 +288,8 @@ int runUnityTests(void) {
 	// CBA Seems that first call to write_file allocates some memory (at least with NRF52 LittleFS) so get that out of the way first
 	{
 		RNS::Bytes data("foo");
-		RNS::Utilities::OS::write_file("./foo", data);
-		RNS::Utilities::OS::remove_file("./foo");
+		RNS::Utilities::OS::write_file("/foo", data);
+		RNS::Utilities::OS::remove_file("/foo");
 	}
 
 	size_t post_memory = RNS::Utilities::Memory::heap_available();

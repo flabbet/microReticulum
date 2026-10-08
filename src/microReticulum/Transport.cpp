@@ -391,7 +391,7 @@ DestinationEntry empty_destination_entry;
 			microStore::set_time_offset(Utilities::OS::getTimeOffset() / 1000);
 #endif
 			TRACE("Initializing path table store...");
-			_path_store.init(Utilities::OS::get_filesystem(), "./path_store/", false, _path_store_segment_size, _path_store_segment_count);
+			_path_store.init(Utilities::OS::get_filesystem(), "/path_store/", false, _path_store_segment_size, _path_store_segment_count);
 			// If the filesystem is full then clear the path store since it's of no use full anyway
 			if (Utilities::OS::get_filesystem().storageAvailable() > 0 && Utilities::OS::get_filesystem().storageAvailable() < 1024) {
 				WARNING("FileSystem is full, clearing existing path store");
@@ -407,7 +407,7 @@ DestinationEntry empty_destination_entry;
 			microStore::set_time_offset(Utilities::OS::getTimeOffset() / 1000);
 #endif
 			TRACE("Initializing known destinations store...");
-			Identity::_known_store.init(Utilities::OS::get_filesystem(), "./known_store/", false,
+			Identity::_known_store.init(Utilities::OS::get_filesystem(), "/known_store/", false,
 				Identity::_known_store_segment_size, Identity::_known_store_segment_count);
 			if (Utilities::OS::get_filesystem().storageAvailable() > 0 && Utilities::OS::get_filesystem().storageAvailable() < 1024) {
 				WARNING("FileSystem is full, clearing existing known destinations store");
@@ -424,7 +424,7 @@ DestinationEntry empty_destination_entry;
 			microStore::set_time_offset(Utilities::OS::getTimeOffset() / 1000);
 #endif
 			TRACE("Initializing packet hashlist store...");
-			_packet_hash_store.init(Utilities::OS::get_filesystem(), "./hashlist_store/", false,
+			_packet_hash_store.init(Utilities::OS::get_filesystem(), "/hashlist_store/", false,
 				_hashlist_segment_size, _hashlist_segment_count);
 			if (Utilities::OS::get_filesystem().storageAvailable() > 0 && Utilities::OS::get_filesystem().storageAvailable() < 1024) {
 				WARNING("FileSystem is full, clearing existing packet hashlist store");

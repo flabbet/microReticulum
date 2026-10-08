@@ -4,7 +4,7 @@
 
 #include "microReticulum.h"
 
-const char destination_table_path[] = "./destination_table";
+const char destination_table_path[] = "/destination_table";
 
 class InInterface : public RNS::InterfaceImpl {
 public:

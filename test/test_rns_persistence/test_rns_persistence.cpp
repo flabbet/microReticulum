@@ -36,8 +36,8 @@ private:
 
 };
 
-const char test_path_table_path[] = "./test_path_table";
-const char test_empty_path_table_path[] = "./test_empty_path_table";
+const char test_path_table_path[] = "/test_path_table";
+const char test_empty_path_table_path[] = "/test_empty_path_table";
 
 void testSerializeDestinationTable() {
 	HEAD("testSerializeDestinationTable", RNS::LOG_TRACE);
