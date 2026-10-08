@@ -133,7 +133,7 @@ Reticulum::Reticulum() : _object(new Object()) {
 */
 // CBA TEST
 	//_storagepath = ".";
-	strncpy(_storagepath, ".", FILEPATH_MAXSIZE);
+	strncpy(_storagepath, "/", FILEPATH_MAXSIZE);
 	//_cachepath = "./cache";
 	strncpy(_cachepath, "/cache", FILEPATH_MAXSIZE);
 
